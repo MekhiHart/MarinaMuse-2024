@@ -43,6 +43,7 @@ const Dashboard = ({ theme, mode }) => {
 
     async function fetchToken() {
       const result = await axios(process.env.REACT_APP_API_URL + '/host/token')
+      console.log("result: ", result)
       if (!ignore) setAccessToken(result.data)
     }
 
