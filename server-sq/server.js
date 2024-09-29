@@ -36,6 +36,8 @@ app.use('/host', host(session));
 app.use('/search', search(session));
 app.use('/queue', queue(io, session));
 app.use('/playback', playback(io, session));
+app.get("/", (req, res) => res.send("MarinaHacks server is live!"));
+
 
 // Open to port
 server.listen(process.env.PORT || 3001, () => {
