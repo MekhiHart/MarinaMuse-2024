@@ -10,8 +10,6 @@ const AUTH_URL =
   "/auth&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
 
 export default function Admin() {
-  console.log("client ID: ", process.env.REACT_APP_CLIENT_ID);
-  console.log("baseURL: ", window.location.origin);
   return (
     <Container
       className="d-flex justify-content-center align-items-center"
