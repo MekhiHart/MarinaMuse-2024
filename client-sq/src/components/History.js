@@ -90,7 +90,7 @@ const History = ({ theme }) => {
                     borderColor: theme.palette.common.border,
                     backgroundColor: theme.palette.background.secondary,
                     color: theme.palette.text.primary,
-                    fontSize: "4vw"
+                    fontSize: "100%"
                   }}
     
                   type="search"
@@ -137,8 +137,7 @@ const History = ({ theme }) => {
                   border: '.25vh solid ' + theme.palette.common.border,
                   marginTop: 100 * .02+ 'vh', borderRadius: 100 * .015+ 'vh',
                   display: "flex", flexDirection: "row", fontWeight: "bold",
-                  height: "75.3vh", backgroundColor: theme.palette.background.secondary, color: theme.palette.text.primary,
-                  fontSize: '4vw', width: "90vw",
+                  height: "75.3vh", backgroundColor: theme.palette.background.secondary, color: theme.palette.text.primary, width: "90vw",
                 }}
     
               >
@@ -225,7 +224,7 @@ const History = ({ theme }) => {
                 border: borderColor,
                 borderColor: theme.palette.common.border,
                 backgroundColor: theme.palette.background.secondary,
-                color: theme.palette.text.primary
+                color: theme.palette.text.primary,
               }}
 
               type="search"
@@ -273,7 +272,7 @@ const History = ({ theme }) => {
               marginTop: 100 * .02+ 'vh', borderRadius: 100 * .015+ 'vh',
               display: "flex", flexDirection: "row", fontWeight: "bold",
               height: "75.3vh", backgroundColor: theme.palette.background.secondary, color: theme.palette.text.primary,
-              fontSize: 100 * 0.0145+ 'vw', width: 100 * .7775+ 'vw'
+              fontSize: '1.5vw', width: 100 * .7775+ 'vw'
             }}
 
           >
