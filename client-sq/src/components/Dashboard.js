@@ -190,10 +190,6 @@ const Dashboard = ({ theme, mode }) => {
 
   return (
     <div style={{ minHeight: "100vh", width: 100 * .8 + 'vw', maxWidth: "100%" }}>
-      <Container style={{
-        fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .045 + 'vh', marginLeft: 100 * .01 + 'vw',
-        fontSize: 100 * .021 + 'vw', fontWeight: "1000", color: theme.palette.text.primary
-      }}>Home</Container>
       <div style={{ display: "inline-flex", width: "100%", height: 100 + 'vh', marginTop: -100 * .00 + 'vh' }}>
         <Container style={{
           fontFamily: "'DM Sans', sans-serif",

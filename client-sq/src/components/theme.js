@@ -13,7 +13,7 @@ const themeDefinition = (mode) => ({
                     third: "#FFFFFF"
                 },
                 primary: {
-                    main: "#496FFF"
+                    main: "#F9A8D4"
                 },
                 common:{
                     border: "#E0E4F2",
@@ -33,11 +33,11 @@ const themeDefinition = (mode) => ({
                     third: "#151A28"
                 },
                 primary: {
-                    main: "#496FFF"
+                    main: "##F9A8D4"
                 },
                 common: {
                     border: "#202733",
-                    boxShadow: "#496FFF",
+                    boxShadow: "##F9A8D4",
                     misc: "#5A627E",
                     disButton: "#3C435C"
                 }

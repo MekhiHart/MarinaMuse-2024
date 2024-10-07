@@ -1,0 +1,11 @@
+/* NavBar.css */
+.nav-item-title {
+    display: block; /* Show titles by default */
+  }
+  
+  @media (max-width: 768px) {
+    .nav-item-title {
+      display: none; /* Hide titles on mobile screens */
+    }
+  }
+  

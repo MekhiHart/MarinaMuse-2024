@@ -51,10 +51,10 @@ function LandingPage({ theme, mode }) {
                                     color: theme.palette.text.primary,
                                     marginTop: '0vh'
                                 }}>
-                                    Hey <a style={{ color: theme.palette.primary.main }}>BeachHacks!👋</a>
+                                    Hey <a style={{ color: theme.palette.primary.main }}>MarinaHacks!👋</a>
                                 </div>
 
-                                <div style={{ textAlign: 'center', fontWeight: 500, fontSize: '3.4vh', height: '8vh', color: theme.palette.text.primary, marginTop: '1vh' }}>Ready to add your vibe to the party with BeachMuse?</div>
+                                <div style={{ textAlign: 'center', fontWeight: 500, fontSize: '3.4vh', height: '8vh', color: theme.palette.text.primary, marginTop: '1vh' }}>Ready to add your vibe to the party with MarinaMuse?</div>
                                 
                                 <div style={{marginLeft: '-7vh'}}>
                                 <img className ="floating2" src="BeachNotes.png"
@@ -141,7 +141,7 @@ function LandingPage({ theme, mode }) {
                     {mainPageFadeIn === false && clickNum === 1 ?
                         <Fade in={!mainPageFadeIn} timeout={3000}>
 
-                            <div style={{ display: "inline-flex", width: "100%", height: "100%" }}>
+                            <div style={{ display: "inline-flex", width: "100%", height: "100%"}}>
                                 <div style={{
                                     width: "49.5%", height: "100%",
                                     paddingTop: "20.625vh", paddingLeft: "6.7vw",
@@ -251,7 +251,7 @@ function LandingPage({ theme, mode }) {
                                 <div style={{ color: theme.palette.primary.main, fontWeight: "bold", fontSize: "3.70vh" }}>Other things to know</div>
 
                                 <div style={{ height: '8vh', marginTop: "0.1vh", fontWeight: 500, color: theme.palette.text.primary, fontSize: "2.9725vh", lineHeight: '4vh' }}>
-                                    We implemented the following rules to create the best experience for BeachHacks!</div>
+                                    We implemented the following rules to create the best experience for MarinaHacks!</div>
 
 
                                 <div style={{ marginTop: "9.5vh", display: "inline-flex" }}>
