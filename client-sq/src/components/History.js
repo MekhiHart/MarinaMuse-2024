@@ -67,7 +67,7 @@ const History = ({ theme }) => {
 
   return (
     <div>
-    { isMobile ? (
+    { isDesktop ? (
       // The following is returned when screen width > 600px
           <div style={{ minHeight: "100vh", width: "90vh", maxWidth: "100%" }}>
 
