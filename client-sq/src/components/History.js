@@ -10,9 +10,9 @@ import { SocketContext } from './App';
 const History = ({ theme }) => {
 
   // handling mobile vs. desktop screen size
-  const [isMobile, setMobile] = useState(window.innerWidth <= 600);
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 600);
   const handleScreenSize = () => {
-    setMobile(window.innerWidth <= 600);
+    setDesktop(window.innerWidth > 600);
   }
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const History = ({ theme }) => {
   return (
     <div>
     { isMobile ? (
-      // The following is returned when screen width <= 600px
+      // The following is returned when screen width > 600px
           <div style={{ minHeight: "100vh", width: "90vh", maxWidth: "100%" }}>
 
           <div style={{ display: "inline-flex", height: 100+ 'vh', marginTop: -100 * .05 + 'vh'}}>
@@ -200,7 +200,7 @@ const History = ({ theme }) => {
           </div>
         </div>
     ) : (
-      // The following is returned when screen width > 600px
+      // The following is returned when screen width <= 600px
     <div style={{ minHeight: "100vh", width: "80vh", maxWidth: "100%" }}>
       <Container style={{
         fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .045+ 'vh', marginLeft: 100 * .01+ 'vw',
