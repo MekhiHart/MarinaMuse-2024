@@ -113,7 +113,7 @@ const History = ({ theme }) => {
                 <IconButton
                   disableRipple
                   style={{
-                    marginLeft: -89 + 'vw', marginTop: 100 * .023+ 'vh', marginBottom: 100 * .000+ 'vh', height: 100 * .05+ 'vh',
+                    marginTop: 100 * .0235 + 'vh', marginLeft: -90 + 'vw', marginBottom: 100 * .000+ 'vh', height: 100 * .05+ 'vh',
                     width: 100 * .05+ 'vh', borderRadius: 80, display: "flex",
     
                     color: clickedSB
