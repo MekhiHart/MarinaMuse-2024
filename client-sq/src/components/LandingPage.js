@@ -36,6 +36,7 @@ function LandingPage({ theme, mode }) {
                     direction="column"
                     alignItems="center"
                     justifyContent="center"
+                    
                 >
                     {mainPageFadeIn === true ?
                         <Fade in={mainPageFadeIn} timeout={3000}>

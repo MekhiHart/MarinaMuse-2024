@@ -1,113 +1,88 @@
 // Component for rendering the Queue
-import React, { useState } from "react";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import AccessTimeFilledRoundedIcon from "@mui/icons-material/AccessTimeFilledRounded";
-import HelpCenterRoundedIcon from "@mui/icons-material/HelpCenterRounded";
-import { NavLink } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
-import InputBase from "@mui/material/InputBase";
-import IconButton from "@mui/material/IconButton";
-import axios from "axios";
-import "./NavBar.css"; // Import the CSS file for styling
+import React from "react"
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import AccessTimeFilledRoundedIcon from '@mui/icons-material/AccessTimeFilledRounded';
+
+import HelpCenterRoundedIcon from '@mui/icons-material/HelpCenterRounded';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = ({ children, theme, mode }) => {
-  const [searchQuery, setSearchQuery] = useState("");
 
-  // Function to handle search
-  const handleSearch = async () => {
-    if (!searchQuery) return;
-    // Example search function; you can modify this to suit your requirements
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/search/tracks`,
-        { searchString: searchQuery }
-      );
-      console.log(response.data); // Process search results as needed
-    } catch (error) {
-      console.error("Search error: ", error);
-    }
-  };
+    const menuItem = [
+        {
+            path: "/",
+            name: "Home",
+            icon: <HomeRoundedIcon style={{ fontSize: '2.75vh' }} />
+        },
+        {
+            path: "/history",
+            name: "History",
+            icon: <AccessTimeFilledRoundedIcon style={{ fontSize: '2.75vh' }} />
+        },
+        {
+            path: "/howtouse",
+            name: "How to use",
+            icon: <HelpCenterRoundedIcon style={{ fontSize: '2.75vh' }} />
+        }
 
-  const menuItem = [
-    {
-      path: "/",
-      name: "Home",
-      icon: <HomeRoundedIcon style={{ fontSize: "2.75vh" }} />,
-    },
-    {
-      path: "/history",
-      name: "History",
-      icon: <AccessTimeFilledRoundedIcon style={{ fontSize: "2.75vh" }} />,
-    },
-    {
-      path: "/howtouse",
-      name: "How to use",
-      icon: <HelpCenterRoundedIcon style={{ fontSize: "2.75vh" }} />,
-    },
-  ];
+    ]
 
-  return (
-    <div
-      style={{
-        backgroundColor: theme.palette.background.secondary,
-        borderRight: ".25vh solid " + theme.palette.common.border,
-        width: "100vw",
-        height: "7vh",
-        display: "flex",
-        alignItems: "center", // Vertically align items to the center
-        justifyContent: "space-between", // Distribute items evenly with space between
-        padding: "0 10vw", // Adjust padding as needed
-        border: "2px solid red",
-      }}
-    >
-      {/* Logo */}
-      <img
-        style={{
-          transition: "transform .2s",
-          width: 52 * 0.24 + "vw",
-          height: 52 * 0.152 + "vw",
-          marginRight: "5vh",
-        }}
-        src={mode === "light" ? "logo.png" : "logoDark.png"}
-        alt="Logo"
-      />
+    return (
 
-      {/* Navigation Links */}
-      {menuItem.map((item, index) => (
-        <NavLink
-          style={{
-            marginLeft: ".65vw",
-            marginBottom: "1vh",
-            marginTop: "1vh",
-            width: "12.35vw",
-            borderRadius: ".75vh",
-            padding: "1.1vh .7vw",
-            height: "5vh",
-            display: "flex",
-            alignItems: "center",
-          }}
-          to={item.path}
-          key={index}
-          className={mode === "light" ? "link" : "link1"}
-          activeClassName="active"
-        >
-          {item.icon}
-          <div
-            className="nav-item-title" // Make sure to add this class
-            style={{
-              fontSize: "1.85vh",
-              fontWeight: 500,
-              marginLeft: ".1vw",
-            }}
-          >
-            {item.name}
-          </div>
-        </NavLink>
-      ))}
+        <div style={{ backgroundColor: theme.palette.background.secondary, borderRight: '.25vh solid ' + theme.palette.common.border, width: '17.6vw', height: "100vh" }}>
+            <div style={{
+                marginLeft: '1vw',
+                fontFamily: "DM Sans",
+                fontWeight: 700
+            }}>
+                <div style={{ alignItems: "center", alignSelf: "center", alignContent: "center", marginLeft: '1vw', marginTop: '2vh' }}>
+                    <div style={{
+                        height: "18vh",
+                        display: "flex",
+                        paddingTop: "2.25vh",
+                        paddingLeft: ".5vw"
+                    }}>
 
-      <main>{children}</main>
-    </div>
-  );
+
+                        <img  style={{transition:'transform .2s', width: 52 * .240 + 'vw', height: 52 * 0.152 + 'vw' }}
+                            src={mode === "light"? "logo.png": "logoDark.png"} />
+                        <div style= {{marginLeft:'-1.5vw', marginTop: '1.6vw'}}>
+                            <img class = "floating" style={{transition:'transform .2s', width: 5 * .15 + 'vw', height: 5 * 0.19 + 'vw' }}
+                            src="note2.png" />
+                            <img class = "floating" style={{animationDelay: '.25s', marginTop:'1.3vw',marginLeft:'-.4vw',transition:'transform .2s', width: 5 * .22 + 'vw', height: 5 * 0.21 + 'vw' }}
+                            src="note1.png" />
+                        </div>
+
+                    </div>
+                    <p style={{ marginTop: '4vh', color: theme.palette.text.primary, fontSize: '2vh' }}></p>
+                    {
+                        menuItem.map((item, index) => (
+                            <NavLink style={{
+                                marginLeft: '.65vw',
+                                marginBottom: '1vh',
+                                width: '12.35vw',
+                                borderRadius: '.75vh',
+                                padding: "1.1vh .7vw",
+                                gap: '1.1vh',
+                                height: '5vh'
+                            }}
+                                to={item.path}
+                                key={index}
+                                className={mode === "light" ? "link" : "link1"}
+                                activeclassName="active">
+                                {item.icon}
+                                <div style={{ display: "block", fontSize: '1.85vh', fontWeight: 500, marginTop: '0vh', marginLeft: '.1vw' }} >{item.name}</div>
+                            </NavLink>
+                        ))
+                    }
+                </div>
+
+
+                
+                <main>{children}</main>
+            </div>
+        </div>
+    );
 };
 
 export default NavBar;
