@@ -10,18 +10,6 @@ import { SocketContext } from './App'
 
 const Dashboard = ({ theme, mode }) => {
 
-  // handling mobile vs. desktop screen size
-  const [isMobile, setMobile] = useState(window.innerWidth <= 600);
-  const handleScreenSize = () => {
-    setMobile(window.innerWidth <= 600);
-  }
-
-  useEffect(() => {
-    window.addEventListener("resize", handleScreenSize);
-    return () => window.removeEventListener("resize", handleScreenSize);
-  })
-
-
   const [borderColor, setBC] = useState(".25vh solid " + theme.palette.common.border)
 
   const socket = useContext(SocketContext);
@@ -55,7 +43,6 @@ const Dashboard = ({ theme, mode }) => {
 
     async function fetchToken() {
       const result = await axios(process.env.REACT_APP_API_URL + '/host/token')
-      console.log("result: ", result)
       if (!ignore) setAccessToken(result.data)
     }
 
@@ -202,108 +189,7 @@ const Dashboard = ({ theme, mode }) => {
   }, [search])
 
   return (
-    <div>
-      { isMobile ? (
-            <div style={{ minHeight: "100vh", maxWidth: "100%", marginLeft: "4vw", marginRight: "4vw"}}>
-            <div style={{ display: "flex", flexDirection: "row"}}>
-      
-            <input type="search" id="site-search" style={{
-              marginLeft: 0,
-              marginTop: 100 * .018 + 'vh',
-              width: "100%",
-              height: 100 * .06 + 'vh',
-              borderRadius: 100 * .015 + 'vh',
-              border: borderColor,
-              borderColor: theme.palette.common.border,
-              paddingLeft: 100 * .1 + 'vw',
-              paddingRight: 100 * .00875 + 'vw',
-              backgroundColor: theme.palette.background.secondary,
-              color: theme.palette.text.primary,
-              fontSize: "120%"
-            }}
-              placeholder="Search for a song to queue"
-              className={theme.palette.mode == 'light' ? "searchA" : "searchB"}
-              onChange={(e) => { setInput(e.target.value) }}
-              onKeyPress={
-                handleKeyPress
-              }
-              onFocus={handleFocus}
-              onBlur={handleBlur} />
-      
-      
-              <IconButton disableRipple
-      
-                style={{
-                  marginTop: 100 * .0235 + 'vh', marginLeft: -90 + 'vw', height: 100 * .05 + 'vh',
-                  width: 100 * .05 + 'vh', borderRadius: 80,
-      
-                  color: clicked ? theme.palette.primary.main : theme.palette.common.misc
-                }}
-                onClick={() => {
-      
-                  setSearch(dynInput)
-      
-                }}
-                type="button"
-                variant="contained"
-                children={<SearchRoundedIcon style={{ fontSize: 100 * .07 + 'vw' }} />}
-                fullWidth={false}
-              >
-              </IconButton>
-      
-      
-            </div>
-      
-            <div style={{
-                marginLeft: 0,
-                marginTop: 100 * .018 + 'vh',
-                width: "100%",
-                height: "auto",
-                borderRadius: 100 * .015 + 'vh',
-                border: borderColor,
-                borderColor: theme.palette.common.border,
-                padding: "4vw",
-                backgroundColor: theme.palette.background.secondary,
-                color: theme.palette.text.primary,
-              }}>
-                <div>
-                  <h2 style={{ color: theme.palette.text.primary}}>Now playing</h2>
-                  {accessToken === "" ?
-                    <h2 color={theme.palette.text.primary}>LOGIN TO SEE THE PLAYER</h2> :
-                    <NowPlaying theme={theme} mode={mode} />
-                  }
-                </div>
-            </div>
-      
-            <div style={{
-                marginLeft: 0,
-                marginTop: 100 * .018 + 'vh',
-                width: "100%",
-                height: "100%",
-                borderRadius: 100 * .015 + 'vh',
-                border: borderColor,
-                borderColor: theme.palette.common.border,
-                padding: "4vw",
-                backgroundColor: theme.palette.background.secondary,
-                color: theme.palette.text.primary,
-              }}>
-              <h1>Up next</h1>
-              {queueData.length === 0 ?
-                          <div style={{ opacity: "50%", color: theme.palette.text.primary, marginLeft: '.5vw', fontSize: "120%", fontWeight: 500 }}>
-                            Be the first to add a song to the queue!
-                          </div>
-                          :
-                          <Queue trackList={queueData} theme={theme} />}
-            </div>
-      
-          </div>
-      ) : (
-
-        <div style={{ minHeight: "100vh", width: 100 * .8 + 'vw', maxWidth: "100%" }}>
-      <Container style={{
-        fontFamily: "'DM Sans', sans-serif", marginTop: 100 * .045 + 'vh', marginLeft: 100 * .01 + 'vw',
-        fontSize: 100 * .021 + 'vw', fontWeight: "1000", color: theme.palette.text.primary
-      }}>Home</Container>
+    <div style={{ minHeight: "100vh", width: 100 * .8 + 'vw', maxWidth: "100%" }}>
       <div style={{ display: "inline-flex", width: "100%", height: 100 + 'vh', marginTop: -100 * .00 + 'vh' }}>
         <Container style={{
           fontFamily: "'DM Sans', sans-serif",
@@ -337,25 +223,7 @@ const Dashboard = ({ theme, mode }) => {
               onBlur={handleBlur} />
 
 
-            <IconButton disableRipple
 
-              style={{
-                marginTop: 100 * .0235 + 'vh', marginLeft: -100 * .2875 + 'vw', height: 100 * .05 + 'vh',
-                width: 100 * .05 + 'vh', borderRadius: 80,
-
-                color: clicked ? theme.palette.primary.main : theme.palette.common.misc
-              }}
-              onClick={() => {
-
-                setSearch(dynInput)
-
-              }}
-              type="button"
-              variant="contained"
-              children={<SearchRoundedIcon style={{ fontSize: 100 * .02 + 'vw' }} />}
-              fullWidth={false}
-            >
-            </IconButton>
 
 
           </div>
@@ -615,11 +483,6 @@ const Dashboard = ({ theme, mode }) => {
           </Container>
         </Container>
       </div>
-    </div>
-
-      )
-
-      }
     </div>
   )
 }
