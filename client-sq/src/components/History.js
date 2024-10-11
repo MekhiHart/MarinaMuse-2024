@@ -85,7 +85,7 @@ const History = ({ theme }) => {
                     height: 100 * .06+ 'vh',
                     borderRadius: 100 * .015+ 'vh',
                     paddingLeft: 100 * .1 + 'vw',
-                    paddingRight: 100 * .00875+ 'vw',
+                    paddingRight: 100 * .1 + 'vw',
                     border: borderColor,
                     borderColor: theme.palette.common.border,
                     backgroundColor: theme.palette.background.secondary,
@@ -113,7 +113,7 @@ const History = ({ theme }) => {
                 <IconButton
                   disableRipple
                   style={{
-                    marginTop: 100 * .0235 + 'vh', marginLeft: -90 + 'vw', marginBottom: 100 * .000+ 'vh', height: 100 * .05+ 'vh',
+                    marginTop: 100 * .0235 + 'vh', marginLeft: -90 + 'vw', height: 100 * .05+ 'vh',
                     width: 100 * .05+ 'vh', borderRadius: 80, display: "flex",
     
                     color: clickedSB
@@ -219,12 +219,13 @@ const History = ({ theme }) => {
                 width: 100 * .7775+ 'vw',
                 height: 100 * .06+ 'vh',
                 borderRadius: 100 * .015+ 'vh',
-                paddingLeft: 100 * .027+ 'vw',
+                paddingLeft: 100 * .027 + 'vw',
                 paddingRight: 100 * .00875+ 'vw',
                 border: borderColor,
                 borderColor: theme.palette.common.border,
                 backgroundColor: theme.palette.background.secondary,
                 color: theme.palette.text.primary,
+                fontSize: "100%"
               }}
 
               type="search"
@@ -272,7 +273,7 @@ const History = ({ theme }) => {
               marginTop: 100 * .02+ 'vh', borderRadius: 100 * .015+ 'vh',
               display: "flex", flexDirection: "row", fontWeight: "bold",
               height: "75.3vh", backgroundColor: theme.palette.background.secondary, color: theme.palette.text.primary,
-              fontSize: '1.5vw', width: 100 * .7775+ 'vw'
+              width: 100 * .7775+ 'vw'
             }}
 
           >
