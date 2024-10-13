@@ -73,7 +73,7 @@ main{
 
 .link:hover {
   background: #F6F8FF;
-  color: #496fff;
+  color: #F9A8D4;
   transition: all 0.5s;
 }
 
@@ -86,13 +86,28 @@ main{
 
 .link1:hover {
   background: #202733;
-  color: #496fff;
+  color: #F9A8D4;
   transition: all 0.5s;
 }
 
 .active {
-  background: #496fff;
+  background: #F9A8D4;
   color: #FFFFFF;
+}
+
+/* styles.css or wherever your CSS is located */
+
+.navbar-container {
+  display: flex;
+  flex-direction: column; /* Default to column for larger screens */
+}
+
+@media (max-width: 768px) { /* Adjust the max-width as needed */
+  .navbar-container {
+    flex-direction: row; /* Change to row for mobile */
+    justify-content: space-between; /* Space out items */
+    align-items: center; /* Center items vertically */
+  }
 }
 
 .searchA{
@@ -220,13 +235,13 @@ main{
  
 .button {
 
-  color: #496FFF;
+  color: #F9A8D4;
   transition: all 0.35s;
  
 }
 
 .button:hover {
 
-  color: #248aff;
+  color: #F9A8D4;
   transition: all 0.35s;
 }
