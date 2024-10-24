@@ -4,7 +4,7 @@ import Dashboard from "./Dashboard.js";
 import Admin from "./Admin";
 import Authorized from "./Authorized";
 import History from "./History";
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useEffect, useContext, useMemo, useRef } from "react";
 import NavBar from "./NavBar";
 import { Routes, Route } from "react-router-dom";
 import HowToUse from "./HowToUse";
@@ -14,10 +14,34 @@ import io from "socket.io-client";
 import CustomSwitch from "./CustomSwitch";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import themeDefinition from "./theme";
-
+import { CountdownModal } from "./CountdownModal.js";
+import { Snackbar, SnackbarContent, Typography } from "@mui/material";
 export const SocketContext = createContext(io(process.env.REACT_APP_API_URL));
 
 function App() {
+  // logic for countdown
+  const [countdown, setCountdown] = useState(0);
+  const countdownRef = useRef(null);
+
+  function clearCountdown() {
+    setTimeout(() => {
+      clearInterval(countdownRef.current); // clears countdown timer
+    }, 30000);
+  }
+
+  function startCountdown() {
+    setCountdown(30); // sets timer
+
+    countdownRef.current = setInterval(() => {
+      setCountdown((prev) => prev - 1);
+      console.log("countdown: ", countdown);
+    }, 1000);
+  }
+  // clears interval when page unmounts
+  useEffect(() => {
+    return () => clearInterval(countdownRef.current);
+  }, []);
+
   const apiSocket = useContext(SocketContext);
   const [mode, setMode] = useState(
     window.localStorage.getItem("theme") === null
@@ -47,6 +71,41 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Snackbar
+        open={countdown > 0}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      >
+        <div
+          style={{
+            display: "flex",
+            width: "280px",
+            height: "180px",
+            backgroundColor: "white",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            borderRadius: "15px",
+            border: "3px solid #F9A8D4",
+          }}
+        >
+          <Typography
+            sx={{
+              color: "#575279",
+            }}
+            variant="h6"
+          >
+            Queue Timer:
+          </Typography>
+          <Typography
+            variant="h3"
+            sx={{
+              color: "#818CF8",
+            }}
+          >
+            {countdown}s
+          </Typography>
+        </div>
+      </Snackbar>
       <div
         style={{
           display: "inline-flex",
@@ -139,7 +198,16 @@ function App() {
               path="/"
               element={<Dashboard theme={theme} mode={mode} />}
             ></Route>
-            <Route path="/history" element={<History theme={theme} />}></Route>
+            <Route
+              path="/history"
+              element={
+                <History
+                  theme={theme}
+                  clearCountdown={clearCountdown}
+                  startCountdown={startCountdown}
+                />
+              }
+            ></Route>
 
             <Route
               path="/howtouse"

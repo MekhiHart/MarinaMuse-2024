@@ -1,12 +1,21 @@
 // Component for showing track details
-import { useState, React, useRef } from "react";
+import { useState, React, useRef, useEffect } from "react";
 import axios from "axios";
 import { Slide, Fade, Zoom, TableCell, TableRow } from "@mui/material";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { IconButton } from "@mui/material";
+import { CountdownModal } from "./CountdownModal";
+import { Snackbar, SnackbarContent } from "@mui/material";
 
-const Track = ({ track, clickable, num, theme }) => {
+const Track = ({
+  track,
+  clickable,
+  num,
+  theme,
+  clearCountdown,
+  startCountdown,
+}) => {
   const [clicked, setClicked] = useState(false);
   const [disable, setDisabled] = useState(false);
   const [fade, setSlide] = useState(true);
@@ -36,16 +45,11 @@ const Track = ({ track, clickable, num, theme }) => {
           .then((res) => {
             console.log("data: ", res.data);
             if (res.data === "PASS") {
-              // add timer logic here
-              countdownRef.current = setInterval(() => {
-                countdown.current -= 1;
-                console.log("countdown: ", countdown.current);
-              }, 1000);
+              // start timer
+              startCountdown();
 
-              setTimeout(() => {
-                clearInterval(countdownRef.current); // clears countdown timer
-                countdown.current = 30; // restarts countdown
-              }, 30000);
+              // call clearTimer()
+              clearCountdown();
 
               localStorage.setItem(
                 "time-queued",
@@ -97,6 +101,14 @@ const Track = ({ track, clickable, num, theme }) => {
 
   return (
     <>
+      {/* <Snackbar
+        open={true}
+        message="hi world"
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      >
+        <SnackbarContent>Hello</SnackbarContent>
+      </Snackbar> */}
+      {/* <CountdownModal /> */}
       {clickable == false ? (
         <Fade key={num && track.title} in={true} timeout={1000}>
           <TableRow>

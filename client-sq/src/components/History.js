@@ -7,7 +7,7 @@ import { TableContainer, Table, TableBody, TableHead, tableCellClasses } from '@
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { SocketContext } from './App';
 
-const History = ({ theme }) => {
+const History = ({ theme, startCountdown, clearCountdown }) => {
 
   const socket = useContext(SocketContext);
 
@@ -180,6 +180,8 @@ const History = ({ theme }) => {
                             albumName={track.albumName}
                             duration={track.songDuration}
                             theme={theme}
+                            clearCountdown={clearCountdown}
+                            startCountdown={startCountdown}
                           />
                         ))}
                       </TableBody>
