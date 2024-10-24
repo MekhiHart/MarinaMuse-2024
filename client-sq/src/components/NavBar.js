@@ -44,7 +44,7 @@ const NavBar = ({ children, theme, mode }) => {
                     }}>
 
 
-                        <img  style={{transition:'transform .2s', width: 52 * .240 + 'vw', height: 52 * 0.152 + 'vw' }}
+                        <img  style={{transition:'transform .2s', width: "auto", height: 52 * 0.152 + 'vw', marginLeft: '1.5vw'}}
                             src={mode === "light"? "logo.png": "logoDark.png"} />
                         <div style= {{marginLeft:'-1.5vw', marginTop: '1.6vw'}}>
                             <img class = "floating" style={{transition:'transform .2s', width: 5 * .15 + 'vw', height: 5 * 0.19 + 'vw' }}
