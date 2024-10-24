@@ -4,7 +4,7 @@ import Dashboard from "./Dashboard.js";
 import Admin from "./Admin";
 import Authorized from "./Authorized";
 import History from "./History";
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useEffect, useContext, useMemo, useRef } from "react";
 import NavBar from "./NavBar";
 import { Routes, Route } from "react-router-dom";
 import HowToUse from "./HowToUse";
@@ -14,10 +14,32 @@ import io from "socket.io-client";
 import CustomSwitch from "./CustomSwitch";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import themeDefinition from "./theme";
-
+import { CountdownModal } from "./CountdownModal.js";
 export const SocketContext = createContext(io(process.env.REACT_APP_API_URL));
 
 function App() {
+  // logic for countdown
+  const [countdown, setCountdown] = useState(0);
+  const countdownRef = useRef(null);
+
+  function clearCountdown() {
+    setTimeout(() => {
+      clearInterval(countdownRef.current); // clears countdown timer
+    }, 30000);
+  }
+
+  function startCountdown() {
+    setCountdown(30); // sets timer
+
+    countdownRef.current = setInterval(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+  }
+  // clears interval when page unmounts
+  useEffect(() => {
+    return () => clearInterval(countdownRef.current);
+  }, []);
+
   const apiSocket = useContext(SocketContext);
   const [mode, setMode] = useState(
     window.localStorage.getItem("theme") === null
@@ -47,6 +69,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <CountdownModal countdown={countdown} />
       <div
         style={{
           display: "inline-flex",
@@ -137,9 +160,27 @@ function App() {
             <Route path="/auth" element={<Authorized />}></Route>
             <Route
               path="/"
-              element={<Dashboard theme={theme} mode={mode} />}
+              element={
+                <Dashboard
+                  theme={theme}
+                  mode={mode}
+                  clearCountdown={clearCountdown}
+                  startCountdown={startCountdown}
+                  countdown={countdown}
+                />
+              }
             ></Route>
-            <Route path="/history" element={<History theme={theme} />}></Route>
+            <Route
+              path="/history"
+              element={
+                <History
+                  theme={theme}
+                  clearCountdown={clearCountdown}
+                  startCountdown={startCountdown}
+                  countdown={countdown}
+                />
+              }
+            ></Route>
 
             <Route
               path="/howtouse"

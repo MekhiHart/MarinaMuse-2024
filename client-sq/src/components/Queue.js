@@ -1,28 +1,32 @@
 // Component for rendering the Queue
-import React from "react"
-import Track from "./Track"
-import { TableContainer, Table, TableBody, tableCellClasses, TableCell } from '@mui/material';
+import React from "react";
+import Track from "./Track";
+import {
+  TableContainer,
+  Table,
+  TableBody,
+  tableCellClasses,
+  TableCell,
+} from "@mui/material";
 
-const Queue = ({ trackList, theme }) => {
+const Queue = ({ trackList, theme, clearCountdown, startCountdown, countdown }) => {
   return (
     // Will be modified to include displaying position in queue.
 
-    <TableContainer sx={{ height: "40.5vh", boxShadow: 0, width: "auto", }}
-      style={{ overflowY: "auto", overflowX: "hidden" }}>
-
+    <TableContainer
+      sx={{ height: "40.5vh", boxShadow: 0, width: "auto" }}
+      style={{ overflowY: "auto", overflowX: "hidden" }}
+    >
       <Table
         stickyHeader
         sx={{
           [`& .${tableCellClasses.root}`]: {
-            borderBottom: "none"
+            borderBottom: "none",
           },
           boxShadow: 0,
-
         }}
       >
-
-        <TableBody >
-
+        <TableBody>
           {trackList.map((track, index) => (
             <Track
               track={track}
@@ -30,13 +34,14 @@ const Queue = ({ trackList, theme }) => {
               num={index}
               clickable={false}
               theme={theme}
+              clearCountdown={clearCountdown}
+              startCountdown={startCountdown}
+              countdown={countdown}
             />
           ))}
-
         </TableBody>
       </Table>
     </TableContainer>
-  )
-
-}
+  );
+};
 export default Queue;
