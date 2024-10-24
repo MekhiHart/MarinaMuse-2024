@@ -13,6 +13,7 @@ const DisplayResults = ({
   theme,
   clearCountdown,
   startCountdown,
+  countdown,
 }) => {
   return (
     <TableContainer
@@ -44,6 +45,7 @@ const DisplayResults = ({
               theme={theme}
               clearCountdown={clearCountdown}
               startCountdown={startCountdown}
+              countdown={countdown}
             />
           ))}
         </TableBody>

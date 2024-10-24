@@ -9,7 +9,7 @@ import {
   TableCell,
 } from "@mui/material";
 
-const Queue = ({ trackList, theme, clearCountdown, startCountdown }) => {
+const Queue = ({ trackList, theme, clearCountdown, startCountdown, countdown }) => {
   return (
     // Will be modified to include displaying position in queue.
 
@@ -36,6 +36,7 @@ const Queue = ({ trackList, theme, clearCountdown, startCountdown }) => {
               theme={theme}
               clearCountdown={clearCountdown}
               startCountdown={startCountdown}
+              countdown={countdown}
             />
           ))}
         </TableBody>

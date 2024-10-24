@@ -1,5 +1,5 @@
 // Component for showing track details
-import { useState, React, useRef } from "react";
+import { useState, React } from "react";
 import axios from "axios";
 import { Slide, Fade, Zoom, TableCell, TableRow } from "@mui/material";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
@@ -13,6 +13,7 @@ const Track = ({
   theme,
   clearCountdown,
   startCountdown,
+  countdown,
 }) => {
   const [clicked, setClicked] = useState(false);
   const [disable, setDisabled] = useState(false);
@@ -25,7 +26,7 @@ const Track = ({
 
   function handleAdd() {
     const queueRequest = () => {
-      if (!track.explicit && clickable && track.filter)
+      if (!track.explicit && clickable && track.filter && countdown == 0) // only allow to add music if countdown is 0
         axios
           .post(process.env.REACT_APP_API_URL + "/queue/add", {
             title: track.title,

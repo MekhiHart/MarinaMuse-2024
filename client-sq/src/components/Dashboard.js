@@ -8,7 +8,13 @@ import NowPlaying from "./NowPlaying";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { SocketContext } from "./App";
 
-const Dashboard = ({ theme, mode, startCountdown, clearCountdown }) => {
+const Dashboard = ({
+  theme,
+  mode,
+  startCountdown,
+  clearCountdown,
+  countdown,
+}) => {
   // handling mobile vs. desktop screen size
   const [isMobile, setMobile] = useState(window.innerWidth <= 600);
   const handleScreenSize = () => {
@@ -83,7 +89,7 @@ const Dashboard = ({ theme, mode, startCountdown, clearCountdown }) => {
     fetchQueue();
 
     socket.on("queueAdd", (data) => {
-      console.log("click added")
+      console.log("click added");
       setQueueData((prevData) => [...prevData, data]);
     });
 
@@ -721,6 +727,7 @@ const Dashboard = ({ theme, mode, startCountdown, clearCountdown }) => {
                         theme={theme}
                         startCountdown={startCountdown}
                         clearCountdown={clearCountdown}
+                        countdown={countdown}
                       />
                     </div>
                   ) : (
@@ -895,6 +902,7 @@ const Dashboard = ({ theme, mode, startCountdown, clearCountdown }) => {
                           theme={theme}
                           clearCountdown={clearCountdown}
                           startCountdown={startCountdown}
+                          countdown={countdown}
                         />
                       )}
                     </div>

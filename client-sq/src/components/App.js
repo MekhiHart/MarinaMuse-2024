@@ -166,6 +166,7 @@ function App() {
                   mode={mode}
                   clearCountdown={clearCountdown}
                   startCountdown={startCountdown}
+                  countdown={countdown}
                 />
               }
             ></Route>
@@ -176,6 +177,7 @@ function App() {
                   theme={theme}
                   clearCountdown={clearCountdown}
                   startCountdown={startCountdown}
+                  countdown={countdown}
                 />
               }
             ></Route>
