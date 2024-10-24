@@ -34,7 +34,6 @@ function App() {
 
     countdownRef.current = setInterval(() => {
       setCountdown((prev) => prev - 1);
-      console.log("countdown: ", countdown);
     }, 1000);
   }
   // clears interval when page unmounts
@@ -71,41 +70,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Snackbar
-        open={countdown > 0}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      >
-        <div
-          style={{
-            display: "flex",
-            width: "280px",
-            height: "180px",
-            backgroundColor: "white",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            borderRadius: "15px",
-            border: "3px solid #F9A8D4",
-          }}
-        >
-          <Typography
-            sx={{
-              color: "#575279",
-            }}
-            variant="h6"
-          >
-            Queue Timer:
-          </Typography>
-          <Typography
-            variant="h3"
-            sx={{
-              color: "#818CF8",
-            }}
-          >
-            {countdown}s
-          </Typography>
-        </div>
-      </Snackbar>
+      <CountdownModal countdown={countdown} />
       <div
         style={{
           display: "inline-flex",
