@@ -1,12 +1,10 @@
 // Component for showing track details
-import { useState, React, useRef, useEffect } from "react";
+import { useState, React, useRef } from "react";
 import axios from "axios";
 import { Slide, Fade, Zoom, TableCell, TableRow } from "@mui/material";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { IconButton } from "@mui/material";
-import { CountdownModal } from "./CountdownModal";
-import { Snackbar, SnackbarContent } from "@mui/material";
 
 const Track = ({
   track,
@@ -21,9 +19,6 @@ const Track = ({
   const [fade, setSlide] = useState(true);
 
   let unqueueable = false;
-
-  const countdown = useRef(30);
-  const countdownRef = useRef(null);
 
   if (!track.filter) unqueueable = true;
   if (track.explicit) unqueueable = true;
@@ -101,14 +96,6 @@ const Track = ({
 
   return (
     <>
-      {/* <Snackbar
-        open={true}
-        message="hi world"
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      >
-        <SnackbarContent>Hello</SnackbarContent>
-      </Snackbar> */}
-      {/* <CountdownModal /> */}
       {clickable == false ? (
         <Fade key={num && track.title} in={true} timeout={1000}>
           <TableRow>

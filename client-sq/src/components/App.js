@@ -15,7 +15,6 @@ import CustomSwitch from "./CustomSwitch";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import themeDefinition from "./theme";
 import { CountdownModal } from "./CountdownModal.js";
-import { Snackbar, SnackbarContent, Typography } from "@mui/material";
 export const SocketContext = createContext(io(process.env.REACT_APP_API_URL));
 
 function App() {
@@ -161,7 +160,14 @@ function App() {
             <Route path="/auth" element={<Authorized />}></Route>
             <Route
               path="/"
-              element={<Dashboard theme={theme} mode={mode} />}
+              element={
+                <Dashboard
+                  theme={theme}
+                  mode={mode}
+                  clearCountdown={clearCountdown}
+                  startCountdown={startCountdown}
+                />
+              }
             ></Route>
             <Route
               path="/history"
