@@ -74,7 +74,7 @@ function App() {
                     overflow: "hidden",
                   }}
                 >
-                  <div
+                  {/* <div
                     style={{
                       fontSize: "2vh",
                       fontWeight: 400,
@@ -85,8 +85,8 @@ function App() {
                       display: "table-cell",
                       verticalAlign: "middle",
                     }}
-                  >
-                    <a
+                  > */}
+                    {/* <a
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
@@ -111,8 +111,8 @@ function App() {
                         />
                       </svg>
                       Feedback form
-                    </a>
-                  </div>
+                    </a> */}
+                  {/* </div> */}
                 </div>
 
                 <span
